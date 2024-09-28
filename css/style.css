@@ -93,6 +93,43 @@ a{
     text-decoration: none;
 }
 
+.container{
+        transition: 0.8s ease;
+    }
+
+.container:hover{
+    color:#59331d
+}
+
+.hamburger{
+    display: none;
+    cursor: pointer;
+   
+}
+
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+.collapse {
+    &:not(.show) {
+      display: none;
+    }
+  }
+  
+  .collapsing {
+    height: 0;
+    overflow: hidden;
+    @include transition($transition-collapse);
+  }
+
+
 .media img{
     height: 32px ;
 }
@@ -108,31 +145,62 @@ a{
     .imageArticle{
         padding: 40px 20px;
     }
+  
 }
+
 
 @media all and (max-width:744px) {
     header ul{
         padding: 0;
         flex-direction: column;
         align-items: center;
+    
+        .container{
+            position: fixed;
+            left: -100%
+            top: 70px;
+            gap: 0;
+            flex-direction: column;
+            background-color: #131d26;
+            width: 100%;
+            text-align: center;
+            transition: 0.3s;
+        }
+       
+        .hamburger.active .bar:nth-child(2){
+            opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(1){
+            transform: translateY(8px) rotate(45deg);
+        }
+        .hamburger.active .bar:nth-child(3){
+            transform: translateY(-8px) rotate(-45deg);
+        }
+        .hero{
+            height: 240px;
+        }
+        .hero h1{
+            margin: auto;
+            text-align: center;
+            font-size: 23px;
+        }
+        .imageArticle{
+            flex-direction: column;
+            gap: 40px;
+        }
+        .imageArticle .content{
+            width: 100%;
+        }
+        .imageArticle img {
+            width: 100%;
+            height: 300px;
+        }
     }
-    .hero{
-        height: 240px;
+    .hamburger{
+        display: block;
     }
-    .hero h1{
-        margin: auto;
-        text-align: center;
-        font-size: 23px;
-    }
-    .imageArticle{
-        flex-direction: column;
-        gap: 40px;
-    }
-    .imageArticle .content{
-        width: 100%;
-    }
-    .imageArticle img {
-        width: 100%;
-        height: 300px;
+    header ul{
+        display: none;
     }
 }
+
