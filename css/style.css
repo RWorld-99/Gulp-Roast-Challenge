@@ -129,6 +129,10 @@ a{
     @include transition($transition-collapse);
   }
 
+.collapseExample{
+    
+}
+
 
 .media img{
     height: 32px ;
